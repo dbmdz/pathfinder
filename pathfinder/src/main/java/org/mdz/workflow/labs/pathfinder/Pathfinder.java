@@ -3,12 +3,11 @@ package org.mdz.workflow.labs.pathfinder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.regex.Matcher;
 
+/** Find paths matching identifiers. */
 public class Pathfinder {
 
   private List<PathSpec> pathSpecs;
@@ -17,33 +16,43 @@ public class Pathfinder {
     this.pathSpecs = new ArrayList<>();
   }
 
-
-  public Pathfinder(PathSpec... pathSpecs) {
-    this.pathSpecs = new ArrayList<>(List.of(pathSpecs));
-  }
-
-  public Pathfinder add(PathSpec pathSpec) {
-    pathSpecs.add(pathSpec);
+  /**
+   * Adds a new pattern. Priority is in order of addition, first added have highest priority.
+   *
+   * @param pattern regular expression to match identifiers (Java syntax)
+   * @param template Java template string to generate {@link Path}s
+   * @return the same Pathfinder instance to allow chaining
+   * @see java.util.Formatter
+   * @see java.util.regex.Pattern
+   */
+  public Pathfinder addPattern(String pattern, String template) {
+    pathSpecs.add(new PathSpec(pattern, template));
     return this;
   }
 
+  /**
+   * Returns a {@link Path} for the first pattern matching <code>id</code>.
+   *
+   * <p><em>There are no guarantees that a corresponding file exists.</em>
+   *
+   * @param id identifier to match
+   * @return the corresponding {@link Path}
+   */
   public Optional<Path> find(String id) {
-    for (PathSpec pathSpec : pathSpecs) {
-      Matcher matcher = pathSpec.match(id);
-      if (!matcher.matches()) {
-        continue;
-      }
-      String[] args = new String[matcher.groupCount()];
-      for (int i = 0; i < matcher.groupCount(); i++) {
-        args[i] = matcher.group(i + 1);
-      }
-      return Optional.of(pathSpec.path(args));
-    }
-    return Optional.empty();
+    return pathSpecs.stream()
+        .map(pathSpec -> pathSpec.pathFor(id))
+        .filter(Objects::nonNull)
+        .findFirst();
   }
 
+  /**
+   * Returns a {@link Path} for the first pattern matching <code>id</code> only if the corresponding
+   * file exists.
+   *
+   * @param id identifier to match
+   * @return the corresponding {@link Path}
+   */
   public Optional<Path> findExisting(String id) {
     return find(id).filter(Files::exists);
   }
-
 }
