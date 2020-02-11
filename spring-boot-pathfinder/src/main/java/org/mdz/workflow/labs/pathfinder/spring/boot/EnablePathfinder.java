@@ -8,11 +8,13 @@ import java.lang.annotation.Target;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * Spring Boot Starter Annotation to enable autoloading for Pathfidner configuration from <code>
+ * application.yml</code>.
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
 @Import(PathfinderConfig.class)
 @Configuration
-public @interface EnablePathfinder {
-
-}
+public @interface EnablePathfinder {}

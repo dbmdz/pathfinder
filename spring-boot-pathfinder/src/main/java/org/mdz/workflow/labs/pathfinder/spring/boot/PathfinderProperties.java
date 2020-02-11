@@ -2,33 +2,32 @@ package org.mdz.workflow.labs.pathfinder.spring.boot;
 
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 
+/** Spring properties file to load Pathfinder configuration <code>application.yml</code>. */
 @ConfigurationProperties(prefix = "pathfinder")
 public class PathfinderProperties {
 
-  public class PathPattern {
+  public static class PathPattern {
     private String pattern;
-    private String directory;
+    private String template;
 
-    public PathPattern(String pattern, String directory) {
+    public PathPattern(String pattern, String template) {
       this.pattern = pattern;
-      this.directory = directory;
+      this.template = template;
     }
 
     public String getPattern() {
       return pattern;
     }
 
-    public String getDirectory() {
-      return directory;
+    public String getTemplate() {
+      return template;
     }
   }
 
   private List<PathPattern> patterns;
 
-  public PathfinderProperties(
-      List<PathPattern> patterns) {
+  public PathfinderProperties(List<PathPattern> patterns) {
     this.patterns = patterns;
   }
 
@@ -38,8 +37,6 @@ public class PathfinderProperties {
 
   @Override
   public String toString() {
-    return "PathfinderPropertysource{" +
-        "patterns=" + patterns +
-        '}';
+    return "PathfinderPropertysource{" + "patterns=" + patterns + '}';
   }
 }
