@@ -15,6 +15,6 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented
-@Import(PathfinderConfig.class)
+@Import(PathfinderConfiguration.class)
 @Configuration
 public @interface EnablePathfinder {}

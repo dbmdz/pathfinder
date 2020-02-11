@@ -2,8 +2,10 @@ package org.mdz.workflow.labs.pathfinder.spring.boot;
 
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
 /** Spring properties file to load Pathfinder configuration <code>application.yml</code>. */
+@ConstructorBinding
 @ConfigurationProperties(prefix = "pathfinder")
 public class PathfinderProperties {
 
