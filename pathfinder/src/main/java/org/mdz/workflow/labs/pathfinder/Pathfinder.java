@@ -49,7 +49,7 @@ public class Pathfinder {
   /**
    * Returns a {@link List} of all {@link Path}s with patterns matching <code>id</code>.
    *
-   * <p><em>There are no guarantees that a corresponding files exist.</em>
+   * <p><em>There are no guarantees that corresponding files exist.</em>
    *
    * @param id identifier to match
    * @return all corresponding {@link Path}s
