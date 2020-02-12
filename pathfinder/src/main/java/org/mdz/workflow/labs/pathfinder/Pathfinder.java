@@ -53,6 +53,10 @@ public class Pathfinder {
    * @return the corresponding {@link Path}
    */
   public Optional<Path> findExisting(String id) {
-    return find(id).filter(Files::exists);
+    return pathSpecs.stream()
+        .map(pathSpec -> pathSpec.pathFor(id))
+        .filter(Objects::nonNull)
+        .filter(Files::exists)
+        .findFirst();
   }
 }
