@@ -22,9 +22,10 @@
     <version.assertj-core>3.15.0</version.assertj-core>
     <version.doxia-module-markdown>1.9</version.doxia-module-markdown>
     <version.junit>5.6.0</version.junit>
+    <version.maven-javadoc-plugin>3.1.1</version.maven-javadoc-plugin>
     <version.maven-site-plugin>3.8.2</version.maven-site-plugin>
     <version.maven-wagon-plugin>2.0.0</version.maven-wagon-plugin>
-    <version.maven-wagon-ssh-external>3.3.4</version.maven-wagon-ssh-external>
+    <version.maven-wagon-ssh>3.3.4</version.maven-wagon-ssh>
   </properties>
 
   <dependencyManagement>
@@ -51,7 +52,7 @@
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
         <artifactId>wagon-ssh-external</artifactId>
-        <version>${version.maven-wagon-ssh-external}</version>
+        <version>${version.maven-wagon-ssh}</version>
       </extension>
     </extensions>
 
@@ -94,7 +95,7 @@
             <dependency>
               <groupId>org.apache.maven.wagon</groupId>
               <artifactId>wagon-ssh</artifactId>
-              <version>${version.wagon-ssh}</version>
+              <version>${version.maven-wagon-ssh}</version>
             </dependency>
             <dependency>
               <groupId>org.apache.maven.doxia</groupId>
