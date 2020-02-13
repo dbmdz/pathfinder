@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /** Find paths matching identifiers. */
 public class Pathfinder {
@@ -46,6 +47,21 @@ public class Pathfinder {
   }
 
   /**
+   * Returns a {@link List} of all {@link Path}s with patterns matching <code>id</code>.
+   *
+   * <p><em>There are no guarantees that corresponding files exist.</em>
+   *
+   * @param id identifier to match
+   * @return all corresponding {@link Path}s
+   */
+  public List<Path> findAll(String id) {
+    return pathSpecs.stream()
+        .map(pathSpec -> pathSpec.pathFor(id))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+  }
+
+  /**
    * Returns a {@link Path} for the first pattern matching <code>id</code> only if the corresponding
    * file exists.
    *
@@ -53,6 +69,10 @@ public class Pathfinder {
    * @return the corresponding {@link Path}
    */
   public Optional<Path> findExisting(String id) {
-    return find(id).filter(Files::exists);
+    return pathSpecs.stream()
+        .map(pathSpec -> pathSpec.pathFor(id))
+        .filter(Objects::nonNull)
+        .filter(Files::exists)
+        .findFirst();
   }
 }
