@@ -19,6 +19,6 @@ public class PathfinderConfiguration {
             pathfinderProperties.getPatterns(),
             "Pathfinder configuration in application.yml is missing patterns");
     patterns.forEach(p -> pathfinder.addPattern(p.getPattern(), p.getTemplate()));
-    return new Pathfinder();
+    return pathfinder;
   }
 }
