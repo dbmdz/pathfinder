@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
  */
 class PathSpec {
 
-  private Pattern pattern;
+  private final Pattern pattern;
 
-  private String template;
+  private final String template;
 
-  private FileSystem fileSystem;
+  private final FileSystem fileSystem;
 
   /**
    * @param regex regular expression to match an file identifier
