@@ -1,5 +1,7 @@
 package org.mdz.workflow.labs.pathfinder;
 
+import static java.util.Objects.requireNonNull;
+
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -13,13 +15,25 @@ import java.util.stream.Collectors;
 /** Find paths matching identifiers. */
 public class Pathfinder {
 
-  private List<PathSpec> pathSpecs;
+  private final List<PathSpec> pathSpecs;
+
+  private final FileSystem fileSystem;
 
   public Pathfinder() {
-    this.pathSpecs = new ArrayList<>();
+    this(FileSystems.getDefault());
   }
 
-  private FileSystem fileSystem = FileSystems.getDefault();
+
+  /**
+   * Create a Pathfinder instance with a specific {@link FileSystem}. This is useful for
+   * unit/integration testing using a temporary filesystem.
+   *
+   * @param fileSystem a specific filesystem to replace the default filesystem
+   */
+  public Pathfinder(FileSystem fileSystem) {
+    this.fileSystem = requireNonNull(fileSystem);
+    this.pathSpecs = new ArrayList<>();
+  }
 
   /**
    * Adds a new pattern. Priority is in order of addition, first added have highest priority.
@@ -80,15 +94,4 @@ public class Pathfinder {
         .findFirst();
   }
 
-  /**
-   * Explicitly set the {@link FileSystem}, that PathFinder should use.<br>
-   * If not set, then {@references FileSystems.getDefault()} is used.
-   *
-   * <p>This is only used for testing purposes.
-   *
-   * @param fileSystem the filesystem
-   */
-  public void setFileSystem(FileSystem fileSystem) {
-    this.fileSystem = fileSystem;
-  }
 }
