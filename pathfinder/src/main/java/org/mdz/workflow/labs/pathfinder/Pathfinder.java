@@ -1,5 +1,7 @@
 package org.mdz.workflow.labs.pathfinder;
 
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ public class Pathfinder {
     this.pathSpecs = new ArrayList<>();
   }
 
+  private FileSystem fileSystem = FileSystems.getDefault();
+
   /**
    * Adds a new pattern. Priority is in order of addition, first added have highest priority.
    *
@@ -27,7 +31,7 @@ public class Pathfinder {
    * @see java.util.regex.Pattern
    */
   public Pathfinder addPattern(String pattern, String template) {
-    pathSpecs.add(new PathSpec(pattern, template));
+    pathSpecs.add(new PathSpec(pattern, template, fileSystem));
     return this;
   }
 
@@ -74,5 +78,17 @@ public class Pathfinder {
         .filter(Objects::nonNull)
         .filter(Files::exists)
         .findFirst();
+  }
+
+  /**
+   * Explicitly set the {@link FileSystem}, that PathFinder should use.<br>
+   * If not set, then {@references FileSystems.getDefault()} is used.
+   *
+   * <p>This is only used for testing purposes.
+   *
+   * @param fileSystem the filesystem
+   */
+  public void setFileSystem(FileSystem fileSystem) {
+    this.fileSystem = fileSystem;
   }
 }

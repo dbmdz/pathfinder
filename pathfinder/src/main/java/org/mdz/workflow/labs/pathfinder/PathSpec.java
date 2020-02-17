@@ -1,5 +1,6 @@
 package org.mdz.workflow.labs.pathfinder;
 
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,14 +15,18 @@ class PathSpec {
 
   private String template;
 
+  private FileSystem fileSystem;
+
   /**
    * @param regex regular expression to match an file identifier
    * @param template Java template String used to generate the expected corresponding {@link Path}.
    *     There are no guarantees that this path does exist.
+   * @param fileSystem the {@link FileSystem} to work on
    */
-  public PathSpec(String regex, String template) {
+  public PathSpec(String regex, String template, FileSystem fileSystem) {
     this.pattern = Pattern.compile(regex);
     this.template = template;
+    this.fileSystem = fileSystem;
   }
 
   /**
@@ -40,7 +45,7 @@ class PathSpec {
    */
   private Path path(String... args) {
     var string = String.format(template, args);
-    return Path.of(string);
+    return fileSystem.getPath(string);
   }
 
   /**
