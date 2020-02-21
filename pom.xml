@@ -23,9 +23,9 @@
     <version.doxia-module-markdown>1.9</version.doxia-module-markdown>
     <version.junit>5.6.0</version.junit>
     <version.maven-javadoc-plugin>3.1.1</version.maven-javadoc-plugin>
-    <version.maven-site-plugin>3.8.2</version.maven-site-plugin>
     <version.maven-wagon-plugin>2.0.0</version.maven-wagon-plugin>
     <version.maven-wagon-ssh>3.3.4</version.maven-wagon-ssh>
+    <version.fmt-maven-plugin>2.9</version.fmt-maven-plugin>
   </properties>
 
   <dependencyManagement>
@@ -63,16 +63,21 @@
         <version>${version.maven-wagon-plugin}</version>
         <configuration>
           <fromDir>${project.build.directory}/site/apidocs</fromDir>
-          <includes>*</includes>
-          <serverId>website-projects</serverId>
-          <url>scpexe://bsb0mdz-reporting.bsb.lrz.de:/local/javadoc</url>
-          <toDir>${javadoc.basepath}/${project.artifactId}</toDir>
+          <url>scpexe://di25fem@bsb0mdz-reporting.bsb.lrz.de/</url>
+          <toDir>local/javadoc/${javadoc.basepath}</toDir>
         </configuration>
+        <executions>
+          <execution>
+            <id>javadoc-parent-only</id>
+            <phase>deploy</phase>
+            <inherited>false</inherited>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>com.coveo</groupId>
         <artifactId>fmt-maven-plugin</artifactId>
-        <version>2.9</version>
+        <version>${version.fmt-maven-plugin}</version>
         <executions>
           <execution>
             <goals>
@@ -84,31 +89,6 @@
     </plugins>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <!-- Usage: mvn site:site, mvn site:deploy-->
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>${version.maven-site-plugin}</version>
-          <dependencies>
-            <!-- add support for ssh/scp -->
-            <!-- not working, replaced with wagon-ssh-external due to known_hosts issue -->
-            <dependency>
-              <groupId>org.apache.maven.wagon</groupId>
-              <artifactId>wagon-ssh</artifactId>
-              <version>${version.maven-wagon-ssh}</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven.doxia</groupId>
-              <artifactId>doxia-core</artifactId>
-              <version>1.9</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven.doxia</groupId>
-              <artifactId>doxia-module-markdown</artifactId>
-              <version>${version.doxia-module-markdown}</version>
-            </dependency>
-          </dependencies>
-        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
@@ -155,10 +135,6 @@
       <name>MDZ Snapshot</name>
       <url>http://bsbrepo.bsb.lrz.de/nexus/content/repositories/mdzrepo-snapshot</url>
     </snapshotRepository>
-    <site>
-      <id>website-projects</id>
-      <url>scpexe://bsb0mdz-reporting.bsb.lrz.de/local/projects/${project.groupId}/${project.artifactId}</url>
-    </site>
   </distributionManagement>
 
 </project>
