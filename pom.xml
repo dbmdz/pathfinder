@@ -64,7 +64,6 @@
         <configuration>
           <fromDir>${project.build.directory}/site/apidocs</fromDir>
           <includes>*</includes>
-          <serverId>website-projects</serverId>
           <url>scpexe://bsb0mdz-reporting.bsb.lrz.de:/local/javadoc</url>
           <toDir>${javadoc.basepath}/${project.artifactId}</toDir>
         </configuration>
