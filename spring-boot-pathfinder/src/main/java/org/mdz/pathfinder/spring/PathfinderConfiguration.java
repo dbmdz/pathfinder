@@ -1,8 +1,8 @@
-package org.mdz.workflow.labs.pathfinder.spring.boot;
+package org.mdz.pathfinder.spring;
 
 import static java.util.Objects.requireNonNull;
 
-import org.mdz.workflow.labs.pathfinder.Pathfinder;
+import org.mdz.pathfinder.Pathfinder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

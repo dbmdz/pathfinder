@@ -1,4 +1,4 @@
-package org.mdz.workflow.labs.pathfinder;
+package org.mdz.pathfinder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,8 +28,7 @@ public class PathfinderTest {
 
   @Test
   void shouldMatchFirstPattern() {
-    assertThat(pathfinder.find("bsb40041234"))
-        .contains(path("/path/to/4004/bsb40041234_hocr.xml"));
+    assertThat(pathfinder.find("bsb40041234")).contains(path("/path/to/4004/bsb40041234_hocr.xml"));
   }
 
   @Test

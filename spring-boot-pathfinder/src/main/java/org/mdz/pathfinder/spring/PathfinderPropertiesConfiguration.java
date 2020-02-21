@@ -1,4 +1,4 @@
-package org.mdz.workflow.labs.pathfinder.spring.boot;
+package org.mdz.pathfinder.spring;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 

@@ -1,4 +1,4 @@
-package org.mdz.workflow.labs.pathfinder;
+package org.mdz.pathfinder;
 
 import java.nio.file.FileSystem;
 import java.nio.file.Path;
