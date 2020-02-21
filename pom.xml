@@ -63,10 +63,16 @@
         <version>${version.maven-wagon-plugin}</version>
         <configuration>
           <fromDir>${project.build.directory}/site/apidocs</fromDir>
-          <includes>*</includes>
-          <url>scpexe://di25fem@bsb0mdz-reporting.bsb.lrz.de:/local/javadoc</url>
-          <toDir>${javadoc.basepath}/${project.artifactId}</toDir>
+          <url>scpexe://di25fem@bsb0mdz-reporting.bsb.lrz.de/</url>
+          <toDir>local/javadoc/${javadoc.basepath}</toDir>
         </configuration>
+        <executions>
+          <execution>
+            <id>javadoc-parent-only</id>
+            <phase>deploy</phase>
+            <inherited>false</inherited>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>com.coveo</groupId>
