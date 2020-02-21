@@ -1,4 +1,4 @@
-package org.mdz.workflow.labs.pathfinder;
+package org.mdz.pathfinder;
 
 import static java.util.Objects.requireNonNull;
 
@@ -22,7 +22,6 @@ public class Pathfinder {
   public Pathfinder() {
     this(FileSystems.getDefault());
   }
-
 
   /**
    * Create a Pathfinder instance with a specific {@link FileSystem}. This is useful for
@@ -93,5 +92,4 @@ public class Pathfinder {
         .filter(Files::exists)
         .findFirst();
   }
-
 }
