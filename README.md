@@ -1,11 +1,25 @@
 # Pathfinder path matching and utilities
 
-*Warning: This is still experimental code*
+Resolve paths for identifier patterns.
+ 
+*Example:* Hierarchical paths for a large number of files
 
-Draft of a simple and elegant library to generate Paths from identifier patterns. It builds on the
-strong `java.nio` features (esp. `java.nio.Path`) with file processing in mind.
+```
+bsb12345678_hocr.xml → /storage/12/34/56/78.xml
+```
 
-Example:
+*Example:* Find the matching formats on disk:
+```
+bsb12345678 → /storage/12/34/56/78.jp2
+bsb12345678 → /storage/12/34/56/78.tif
+bsb12345678 → /storage/12/34/56/78.jpg
+```
+Pathfinder can yield the first filepath for that ID that exists.
+
+
+## Usage 
+
+### Java-only
 
 ```java
 
@@ -30,7 +44,21 @@ public class PathfinderTest {
 ``` 
 
 
-Spring:
+### Spring Boot
+
+In `application.yml`:
+```yml
+pathfinder:
+  patterns:
+    - pattern: '^(\w{3})(\d{4})(\d{4})$'
+      template: '/bsbstruc/content/bsb_content%2$s/%1$s%2$s%3$s/xml/hocr/1.0/%1$s%2$s%3$s_hocr.xml'
+    - pattern: '^(\w{3})(\d{2})(\d{2})(\d{2})(\d{2})-(\w{16})$'
+      template: '/bsb_fastocr/%1$s%2$s/%3$s/%4$s/%5$s/hocr_%6$s.html'
+```
+
+Patterns are specified using [Java regular expression syntax](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html).
+For the path templates the full power of [`java.util.Formatter`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html)
+is available.       
 
 ```java
 @EnablePathfinder
