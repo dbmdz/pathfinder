@@ -11,6 +11,10 @@
 
   <name>Pathfinder: Library</name>
 
+  <properties>
+    <version.jimfs>1.1</version.jimfs>
+  </properties>
+
   <artifactId>pathfinder</artifactId>
 
   <dependencies>
@@ -26,7 +30,7 @@
     <dependency>
       <groupId>com.google.jimfs</groupId>
       <artifactId>jimfs</artifactId>
-      <version>1.1</version>
+      <version>${version.jimfs}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

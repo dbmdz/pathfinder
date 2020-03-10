@@ -27,6 +27,7 @@
     <version.maven-wagon-plugin>2.0.0</version.maven-wagon-plugin>
     <version.maven-wagon-ssh>3.3.4</version.maven-wagon-ssh>
     <version.fmt-maven-plugin>2.9</version.fmt-maven-plugin>
+    <version.jacoco-maven-plugin>0.8.4</version.jacoco-maven-plugin>
   </properties>
 
   <dependencyManagement>
@@ -89,7 +90,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.4</version>
+        <version>${version.jacoco-maven-plugin}</version>
         <executions>
           <execution>
             <id>prepare-agent</id>
