@@ -13,6 +13,7 @@
     <module>spring-boot-pathfinder</module>
   </modules>
 
+  <name>Pathfinder</name>
 
   <properties>
     <javadoc.basepath>pathfinder</javadoc.basepath>
@@ -43,7 +44,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
 
 
   <build>
@@ -82,6 +82,25 @@
           <execution>
             <goals>
               <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.4</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <goals>
+              <goal>report</goal>
             </goals>
           </execution>
         </executions>

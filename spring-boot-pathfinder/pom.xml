@@ -9,8 +9,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>spring-boot-pathfinder</artifactId>
+  <name>Pathfinder: Spring Boot Bindings</name>
 
+  <artifactId>spring-boot-pathfinder</artifactId>
 
   <dependencies>
     <dependency>
