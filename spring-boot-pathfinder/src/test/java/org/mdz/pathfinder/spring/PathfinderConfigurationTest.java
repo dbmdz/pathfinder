@@ -5,14 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.nio.file.Path;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mdz.pathfinder.Pathfinder;
 import org.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 
+@DisplayName("PathfinderConfiguration")
 class PathfinderConfigurationTest {
 
   @Test
-  void pathfinder() {
+  @DisplayName("should construct Pathfinder from PathfinderProperties")
+  void shouldConstructPathfinderFromPathfinderProperties() {
     var properties =
         new PathfinderProperties(
             List.of(
