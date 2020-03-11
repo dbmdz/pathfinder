@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mdz.pathfinder.Pathfinder;
 import org.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 
-@DisplayName("PathfinderConfiguration")
+@DisplayName("The PathfinderConfiguration")
 class PathfinderConfigurationTest {
 
   @Test

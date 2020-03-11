@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 
-@DisplayName("PathfinderProperties")
+@DisplayName("The PathfinderProperties")
 class PathfinderPropertiesTest {
 
   @Test
