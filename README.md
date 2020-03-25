@@ -58,7 +58,7 @@ pathfinder:
 
 Patterns are specified using [Java regular expression syntax](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html).
 For the path templates the full power of [`java.util.Formatter`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html)
-is available.       
+is available. The `~/` abbreviation for user home directory is supported in path templates.
 
 ```java
 @EnablePathfinder
