@@ -19,6 +19,8 @@ public class Pathfinder {
 
   private final FileSystem fileSystem;
 
+  private static final String userHomeDirectory = System.getProperty("user.home").concat("/");
+
   public Pathfinder() {
     this(FileSystems.getDefault());
   }
@@ -44,6 +46,9 @@ public class Pathfinder {
    * @see java.util.regex.Pattern
    */
   public Pathfinder addPattern(String pattern, String template) {
+    if (template.startsWith("~/")) {
+      template = template.replaceFirst("~/", userHomeDirectory);
+    }
     pathSpecs.add(new PathSpec(pattern, template, fileSystem));
     return this;
   }
