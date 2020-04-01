@@ -154,13 +154,17 @@
     <repository>
       <id>mdzrepo-release</id>
       <name>MDZ Release</name>
-      <url>http://bsbrepo.bsb.lrz.de/nexus/content/repositories/mdzrepo-release</url>
+      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-releases/</url>
     </repository>
     <snapshotRepository>
       <id>mdzrepo-snapshot</id>
       <name>MDZ Snapshot</name>
-      <url>http://bsbrepo.bsb.lrz.de/nexus/content/repositories/mdzrepo-snapshot</url>
+      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-snapshots/</url>
     </snapshotRepository>
+    <site>
+      <id>website-projects</id>
+      <url>scp://bsb0mdz-reporting.bsb.lrz.de/local/projects/${project.groupId}/${project.artifactId}</url>
+    </site>
   </distributionManagement>
 
 </project>
