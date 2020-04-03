@@ -7,7 +7,7 @@
   <groupId>org.mdz.pathfinder</groupId>
   <artifactId>pathfinder-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <modules>
     <module>pathfinder</module>
     <module>spring-boot-pathfinder</module>
@@ -152,12 +152,12 @@
   <distributionManagement>
     <!-- credentials for server in settings.xml -->
     <repository>
-      <id>mdzrepo-release</id>
+      <id>maven-releases</id>
       <name>MDZ Release</name>
       <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-releases/</url>
     </repository>
     <snapshotRepository>
-      <id>mdzrepo-snapshot</id>
+      <id>maven-snapshots</id>
       <name>MDZ Snapshot</name>
       <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-snapshots/</url>
     </snapshotRepository>
