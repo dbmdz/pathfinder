@@ -19,7 +19,7 @@ public class Pathfinder {
 
   private final FileSystem fileSystem;
 
-  private static final String userHomeDirectory  = System.getProperty("user.home", "").concat("/");
+  private static final String userHomeDirectory = System.getProperty("user.home", "").concat("/");
 
   public Pathfinder() {
     this(FileSystems.getDefault());
