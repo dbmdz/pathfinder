@@ -7,7 +7,7 @@
   <groupId>org.mdz.pathfinder</groupId>
   <artifactId>pathfinder-parent</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.1.0</version>
   <modules>
     <module>pathfinder</module>
     <module>spring-boot-pathfinder</module>

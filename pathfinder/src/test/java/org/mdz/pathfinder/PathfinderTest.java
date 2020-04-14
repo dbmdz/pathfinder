@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,11 @@ public class PathfinderTest {
 
   private FileSystemFixture fs;
 
+  @BeforeAll
+  static void setUpClass() {
+    System.setProperty("user.home", "/home/tester");
+  }
+
   @BeforeEach
   void setUp() {
     fs = new FileSystemFixture();
@@ -24,6 +30,14 @@ public class PathfinderTest {
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s_hocr.xml")
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})-(\\w{16})$", "/other/path/to/%2$s/%4$s.xml")
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s.txt");
+  }
+
+  @Test
+  void shouldReplaceTilde() {
+    pathfinder.addPattern("123", "~/subdir1/subdir2/filename.xml");
+    Optional<Path> actual = pathfinder.find("123");
+    Path expected = fs.path("/home/tester/subdir1/subdir2/filename.xml");
+    assertThat(actual).contains(expected);
   }
 
   @Test
