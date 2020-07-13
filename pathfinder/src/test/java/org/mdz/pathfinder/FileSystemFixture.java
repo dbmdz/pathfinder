@@ -29,4 +29,10 @@ public class FileSystemFixture {
   public FileSystem getFileSystem() {
     return fileSystem;
   }
+
+  public Path createDirectory(String name) throws IOException {
+    var path = path(name);
+    Files.createDirectories(path);
+    return path;
+  }
 }

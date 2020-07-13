@@ -29,7 +29,8 @@ public class PathfinderTest {
         new Pathfinder(fs.getFileSystem())
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s_hocr.xml")
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})-(\\w{16})$", "/other/path/to/%2$s/%4$s.xml")
-            .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s.txt");
+            .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s.txt")
+            .addPattern("^test$", "/tmp/test");
   }
 
   @Test
@@ -77,5 +78,14 @@ public class PathfinderTest {
   void shouldNotFindPathForNotExistingFile() throws IOException {
     Optional<Path> actual = pathfinder.findExisting("bsb40041234");
     assertThat(actual).isEmpty();
+  }
+
+  @Test
+  @DisplayName("find should be able to return a directory")
+  void shouldReturnDirectory() throws IOException {
+    Path expected = fs.createDirectory("/tmp/test");
+    Optional<Path> actual = pathfinder.find("test");
+    assertThat(actual).isNotEmpty();
+    assertThat(actual.get()).isEqualTo(expected);
   }
 }
