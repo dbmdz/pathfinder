@@ -3,6 +3,7 @@ package org.mdz.pathfinder.spring;
 import static java.util.Objects.requireNonNull;
 
 import org.mdz.pathfinder.Pathfinder;
+import org.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,7 +19,11 @@ public class PathfinderConfiguration {
         requireNonNull(
             pathfinderProperties.getPatterns(),
             "Pathfinder configuration in application.yml is missing patterns");
-    patterns.forEach(p -> pathfinder.addPattern(p.getPattern(), p.getTemplate()));
+    for (PathPattern pattern : patterns) {
+      for (String template : pattern.getTemplates()) {
+        pathfinder.addPattern(pattern.getPattern(), template);
+      }
+    }
     return pathfinder;
   }
 }

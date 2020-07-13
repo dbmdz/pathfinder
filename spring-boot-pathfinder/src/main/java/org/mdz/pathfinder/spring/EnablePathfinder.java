@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * Spring Boot Starter Annotation to enable autoloading for Pathfidner configuration from <code>
+ * Spring Boot Starter Annotation to enable autoloading for Pathfinder configuration from <code>
  * application.yml</code>.
  */
 @Retention(RetentionPolicy.RUNTIME)

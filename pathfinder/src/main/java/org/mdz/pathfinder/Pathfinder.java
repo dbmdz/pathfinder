@@ -54,6 +54,22 @@ public class Pathfinder {
   }
 
   /**
+   * Adds a new pattern. Priority is in order of addition, first added have highest priority.
+   *
+   * @param pattern regular expression to match identifiers (Java syntax)
+   * @param templates Java template strings to generate {@link Path}s
+   * @return the same Pathfinder instance to allow chaining
+   * @see java.util.Formatter
+   * @see java.util.regex.Pattern
+   */
+  public Pathfinder addPattern(String pattern, String... templates) {
+    for (String template : templates) {
+      addPattern(pattern, template);
+    }
+    return this;
+  }
+
+  /**
    * Returns a {@link Path} for the first pattern matching <code>id</code>.
    *
    * <p><em>There are no guarantees that a corresponding file exists.</em>
@@ -96,5 +112,20 @@ public class Pathfinder {
         .filter(Objects::nonNull)
         .filter(Files::exists)
         .findFirst();
+  }
+
+  /**
+   * Returns a list of {@link Path} for the all pattern matching <code>id</code> having an existing
+   * corresponding file.
+   *
+   * @param id identifier to match
+   * @return list the {@link Path} instances
+   */
+  public List<Path> findAllExisting(String id) {
+    return pathSpecs.stream()
+        .map(pathSpec -> pathSpec.pathFor(id))
+        .filter(Objects::nonNull)
+        .filter(Files::exists)
+        .collect(Collectors.toList());
   }
 }

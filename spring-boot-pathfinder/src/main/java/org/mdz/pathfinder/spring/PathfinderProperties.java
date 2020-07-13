@@ -1,8 +1,10 @@
 package org.mdz.pathfinder.spring;
 
+
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.lang.Nullable;
 
 /** Spring properties file to load Pathfinder configuration <code>application.yml</code>. */
 @ConstructorBinding
@@ -10,24 +12,35 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 public class PathfinderProperties {
 
   public static class PathPattern {
-    private String pattern;
-    private String template;
+    private final String pattern;
+    private final List<String> templates;
 
-    public PathPattern(String pattern, String template) {
+    public PathPattern(
+        String pattern, @Nullable String template, @Nullable List<String> templates) {
+      if (template == null && (templates == null || templates.isEmpty())) {
+        throw new RuntimeException("PathPattern needs either template or templates to be set");
+      }
+      if (template != null && templates != null && !templates.isEmpty()) {
+        throw new RuntimeException("PathPattern can only use template or templates, not both");
+      }
       this.pattern = pattern;
-      this.template = template;
+      if (template != null) {
+        this.templates = List.of(template);
+      } else {
+        this.templates = templates;
+      }
     }
 
     public String getPattern() {
       return pattern;
     }
 
-    public String getTemplate() {
-      return template;
+    public List<String> getTemplates() {
+      return templates;
     }
   }
 
-  private List<PathPattern> patterns;
+  private final List<PathPattern> patterns;
 
   public PathfinderProperties(List<PathPattern> patterns) {
     this.patterns = patterns;
@@ -39,6 +52,6 @@ public class PathfinderProperties {
 
   @Override
   public String toString() {
-    return "PathfinderPropertysource{" + "patterns=" + patterns + '}';
+    return "PathfinderProperties{" + "patterns=" + patterns + '}';
   }
 }
