@@ -84,7 +84,7 @@ public class PathfinderTest {
   @DisplayName("find should be able to return a directory")
   void shouldReturnDirectory() throws IOException {
     Path expected = fs.createDirectory("/tmp/test");
-    Optional<Path> actual = pathfinder.find("test$");
+    Optional<Path> actual = pathfinder.find("test");
     assertThat(actual).isNotEmpty();
     assertThat(actual.get()).isEqualTo(expected);
   }
