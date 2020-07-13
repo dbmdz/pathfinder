@@ -5,13 +5,13 @@
   <parent>
     <artifactId>pathfinder-parent</artifactId>
     <groupId>org.mdz.pathfinder</groupId>
-    <version>1.1.0</version>
+    <version>1.2.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <name>Pathfinder: Spring Boot Bindings</name>
   <properties>
-    <version.spring-boot>2.2.4.RELEASE</version.spring-boot>
+    <version.spring-boot>2.3.1.RELEASE</version.spring-boot>
     <version.javax.annotation-api>1.3.2</version.javax.annotation-api>
   </properties>
 
@@ -31,6 +31,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
+      <version>${version.spring-boot}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <version>${version.spring-boot}</version>
     </dependency>
     <dependency>

@@ -1,7 +1,7 @@
 package org.mdz.pathfinder.spring;
 
+import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -19,9 +19,9 @@ class PathfinderConfigurationTest {
     var properties =
         new PathfinderProperties(
             List.of(
-                new PathPattern("^x(\\d+)$", "/x/%1$s"),
-                new PathPattern("^y(\\d+)$", "/y/%1$s"),
-                new PathPattern("^z(\\d+)$", "/z/%1$s")));
+                new PathPattern("^x(\\d+)$", "/x/%1$s", emptyList()),
+                new PathPattern("^y(\\d+)$", "/y/%1$s", emptyList()),
+                new PathPattern("^z(\\d+)$", "/z/%1$s", emptyList())));
 
     var pathfinderConfiguration = new PathfinderConfiguration();
 

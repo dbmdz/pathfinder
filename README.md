@@ -2,7 +2,7 @@
 
 Resolve paths for identifier patterns.
  
-*Example:* Hierarchical paths for a large number of files
+*Example:* Hierarchical paths for many files
 
 ```
 bsb12345678_hocr.xml → /storage/12/34/56/78.xml
@@ -56,15 +56,15 @@ pathfinder:
       template: '/bsb_fastocr/%1$s%2$s/%3$s/%4$s/%5$s/hocr_%6$s.html'
 ```
 
-Patterns are specified using [Java regular expression syntax](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html).
+To specify patterns, use [Java regular expression syntax](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html).
 For the path templates the full power of [`java.util.Formatter`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Formatter.html)
-is available. The `~/` abbreviation for user home directory is supported in path templates.
+is available. Templates support the `~/` abbreviation for user home directories.
 
 ```java
 @EnablePathfinder
 class Application {
 
-  private Pathfinder pathfinder;
+  private final Pathfinder pathfinder;
 
   public Application(Pathfinder pathfinder) {
     this.pathfinder = pathfinder;

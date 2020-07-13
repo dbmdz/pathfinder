@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class FileSystemFixture {
 
-  private FileSystem fileSystem;
+  private final FileSystem fileSystem;
 
   public FileSystemFixture() {
     this.fileSystem = Jimfs.newFileSystem(Configuration.unix());
@@ -34,5 +34,13 @@ public class FileSystemFixture {
     var path = path(name);
     Files.createDirectories(path);
     return path;
+  }
+
+  public Path[] createDirectories(String... names) throws IOException {
+    Path[] result = new Path[names.length];
+    for (int i = 0; i < names.length; i++) {
+      result[i] = createDirectory(names[i]);
+    }
+    return result;
   }
 }

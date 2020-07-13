@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +31,8 @@ public class PathfinderTest {
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s_hocr.xml")
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})-(\\w{16})$", "/other/path/to/%2$s/%4$s.xml")
             .addPattern("^(\\w{3})(\\d{4})(\\d{4})$", "/path/to/%2$s/%1$s%2$s%3$s.txt")
-            .addPattern("^test$", "/tmp/test");
+            .addPattern("^test$", "/tmp/test")
+            .addPattern("repeated", "path_1", "path_2");
   }
 
   @Test
@@ -74,8 +76,16 @@ public class PathfinderTest {
   }
 
   @Test
+  @DisplayName("findExisting should find path for multiple existing files")
+  void shouldFindPathForMultipleExistingFiles() throws IOException {
+    Path[] expected = fs.createDirectories("path_1", "path_2");
+    List<Path> actual = pathfinder.findAllExisting("repeated");
+    assertThat(actual).containsExactly(expected);
+  }
+
+  @Test
   @DisplayName("findExisting should find nothing for missing file")
-  void shouldNotFindPathForNotExistingFile() throws IOException {
+  void shouldNotFindPathForNotExistingFile() {
     Optional<Path> actual = pathfinder.findExisting("bsb40041234");
     assertThat(actual).isEmpty();
   }

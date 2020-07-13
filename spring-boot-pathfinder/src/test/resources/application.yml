@@ -1,0 +1,8 @@
+pathfinder:
+  patterns:
+    - pattern: '^(\w{3})(\d{4})(\d{4})$'
+      template: '%1$s%2$s%3$s_hocr.xml'
+    - pattern: '^(\w{3})(\d{4})(\d{4})$.list'
+      templates:
+        - '%1$s%2$s%3$s_hocr.xml'
+        - '%1$s%2$s%3$.txt'

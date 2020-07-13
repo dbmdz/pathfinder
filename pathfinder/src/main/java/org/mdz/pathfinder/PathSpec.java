@@ -6,8 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Specifies a path pattern to match existing files and a template to generae a corresponding {@link
- * java.nio.file.Path}.
+ * Specifies a path pattern to match existing files and a template to generate a corresponding
+ * {@link java.nio.file.Path}.
  */
 class PathSpec {
 
