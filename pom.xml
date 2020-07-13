@@ -153,12 +153,12 @@
     <!-- credentials for server in settings.xml -->
     <repository>
       <id>maven-releases</id>
-      <name>MDZ Release</name>
+      <name>Maven Releases</name>
       <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-releases/</url>
     </repository>
     <snapshotRepository>
       <id>maven-snapshots</id>
-      <name>MDZ Snapshot</name>
+      <name>Maven Snapshots</name>
       <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-snapshots/</url>
     </snapshotRepository>
     <site>
