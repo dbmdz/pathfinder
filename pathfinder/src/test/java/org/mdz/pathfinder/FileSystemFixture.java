@@ -37,8 +37,10 @@ public class FileSystemFixture {
   }
 
   public Path[] createDirectories(String... names) throws IOException {
-    return Arrays.stream(names)
-        .map(this::createDirectory)
-        .toArray(Path[]::new);
+    Path[] result = new Path[names.length];
+    for (int i = 0; i < names.length; i++) {
+      result[i] = createDirectory(names[i]);
+    }
+    return result;
   }
 }
