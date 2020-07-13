@@ -31,13 +31,18 @@ public class PathfinderTest {
         .addPattern("^(\\w{3})(\\d{4})(\\d{4})$",
             "/path/to/%2$s/%1$s%2$s%3$s_hocr.xml")
         .addPattern("^(\\w{3})(\\d{4})(\\d{4})-(\\w{16})$",
-            "/other/path/to/%2$s/%4$s.xml");
+            "/other/path/to/%2$s/%4$s.xml")
+        .addPattern("^(\w{5})$",
+            "%1$.txt", "%1$.xml", "%1$.bin");
 
     assertThat(pathfinder.find("bsb40041234"))
         .contains(Path.of("/path/to/4004/bsb40041234_hocr.xml"));
 
     assertThat(pathfinder.find("bsb40041234-hasvalue87654321"))
         .contains(Path.of("/other/path/to/4004/hasvalue87654321.xml"));
+
+    assertThat(pathfinder.find("12345"))
+        .contains(Path.of("12345.txt"), Path.of("12345.xml"), Path.of("12345.bin"));
   }
 
 }
@@ -54,6 +59,11 @@ pathfinder:
       template: '/bsbstruc/content/bsb_content%2$s/%1$s%2$s%3$s/xml/hocr/1.0/%1$s%2$s%3$s_hocr.xml'
     - pattern: '^(\w{3})(\d{2})(\d{2})(\d{2})(\d{2})-(\w{16})$'
       template: '/bsb_fastocr/%1$s%2$s/%3$s/%4$s/%5$s/hocr_%6$s.html'
+    - pattern: '^(\w{5})$'
+      templates:
+        - '/data/%1$.txt'
+        - '/data/%1$.xml'
+        - '/data/%1$.bin'
 ```
 
 To specify patterns, use [Java regular expression syntax](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html).
