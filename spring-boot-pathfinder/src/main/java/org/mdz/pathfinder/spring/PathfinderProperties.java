@@ -1,6 +1,5 @@
 package org.mdz.pathfinder.spring;
 
-
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
