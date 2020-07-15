@@ -22,6 +22,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <version.assertj-core>3.15.0</version.assertj-core>
     <version.doxia-module-markdown>1.9</version.doxia-module-markdown>
+    <version.githook-maven-plugin>1.0.4</version.githook-maven-plugin>
     <version.junit>5.6.0</version.junit>
     <version.maven-javadoc-plugin>3.1.1</version.maven-javadoc-plugin>
     <version.maven-surefire-plugin>3.0.0-M4</version.maven-surefire-plugin>
@@ -59,6 +60,32 @@
     </extensions>
 
     <plugins>
+      <plugin>
+        <groupId>io.github.phillipuniverse</groupId>
+        <artifactId>githook-maven-plugin</artifactId>
+        <version>${version.githook-maven-plugin}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>install</goal>
+            </goals>
+            <configuration>
+              <hooks>
+                <pre-commit>
+                  if ! mvn com.coveo:fmt-maven-plugin:check ; then
+                  mvn com.coveo:fmt-maven-plugin:format
+                  echo -e "\e[31mCode has been reformatted to match code style\e[0m"
+                  echo -e "\e[31mPlease use git add … to add modified files\e[0m"
+                  echo "Your commit message was:"
+                  cat .git/COMMIT_EDITMSG
+                  exit 1
+                  fi
+                </pre-commit>
+              </hooks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>wagon-maven-plugin</artifactId>
