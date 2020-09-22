@@ -133,6 +133,14 @@
     </pluginManagement>
   </build>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <repositories>
     <repository>
       <id>ossrh-snapshots</id>
@@ -146,23 +154,5 @@
       </releases>
     </repository>
   </repositories>
-
-  <distributionManagement>
-    <!-- credentials for server in settings.xml -->
-    <repository>
-      <id>maven-releases</id>
-      <name>Maven Releases</name>
-      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>maven-snapshots</id>
-      <name>Maven Snapshots</name>
-      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-snapshots/</url>
-    </snapshotRepository>
-    <site>
-      <id>website-projects</id>
-      <url>scp://bsb0mdz-reporting.bsb.lrz.de/local/projects/${project.groupId}/${project.artifactId}</url>
-    </site>
-  </distributionManagement>
 
 </project>
