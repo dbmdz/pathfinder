@@ -1,14 +1,14 @@
-package org.mdz.pathfinder.spring;
+package com.github.dbmdz.pathfinder.spring;
 
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.dbmdz.pathfinder.Pathfinder;
+import com.github.dbmdz.pathfinder.spring.PathfinderProperties.PathPattern;
 import java.nio.file.Path;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mdz.pathfinder.Pathfinder;
-import org.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 
 @DisplayName("The PathfinderConfiguration")
 class PathfinderConfigurationTest {

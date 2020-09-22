@@ -1,4 +1,4 @@
-package org.mdz.pathfinder;
+package com.github.dbmdz.pathfinder;
 
 import java.nio.file.FileSystem;
 import java.nio.file.Path;

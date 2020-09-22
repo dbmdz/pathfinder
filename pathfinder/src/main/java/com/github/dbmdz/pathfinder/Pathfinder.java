@@ -1,4 +1,4 @@
-package org.mdz.pathfinder;
+package com.github.dbmdz.pathfinder;
 
 import static java.util.Objects.requireNonNull;
 
