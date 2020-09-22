@@ -1,4 +1,0 @@
----
-include:
-  - project: "mdz/iwa/ops/ci"
-    file: "gitlab-ci-base.yml"
