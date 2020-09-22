@@ -1,4 +1,4 @@
-package org.mdz.pathfinder.spring;
+package com.github.dbmdz.pathfinder.spring;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
