@@ -20,16 +20,13 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.assertj-core>3.15.0</version.assertj-core>
-    <version.doxia-module-markdown>1.9</version.doxia-module-markdown>
-    <version.githook-maven-plugin>1.0.4</version.githook-maven-plugin>
-    <version.junit>5.6.0</version.junit>
-    <version.maven-javadoc-plugin>3.1.1</version.maven-javadoc-plugin>
-    <version.maven-surefire-plugin>3.0.0-M4</version.maven-surefire-plugin>
-    <version.maven-wagon-plugin>2.0.0</version.maven-wagon-plugin>
-    <version.maven-wagon-ssh>3.3.4</version.maven-wagon-ssh>
-    <version.fmt-maven-plugin>2.9</version.fmt-maven-plugin>
-    <version.jacoco-maven-plugin>0.8.4</version.jacoco-maven-plugin>
+    <version.assertj-core>3.17.2</version.assertj-core>
+    <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
+    <version.junit-jupiter>5.6.0</version.junit-jupiter>
+    <version.maven-javadoc-plugin>3.2.0</version.maven-javadoc-plugin>
+    <version.maven-surefire-plugin>3.0.0-M5</version.maven-surefire-plugin>
+    <version.fmt-maven-plugin>2.10</version.fmt-maven-plugin>
+    <version.jacoco-maven-plugin>0.8.6</version.jacoco-maven-plugin>
   </properties>
 
   <dependencyManagement>
@@ -42,7 +39,7 @@
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>${version.junit}</version>
+        <version>${version.junit-jupiter}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
@@ -50,15 +47,6 @@
 
 
   <build>
-    <extensions>
-      <!-- Enabling the use of SSH -->
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-ssh-external</artifactId>
-        <version>${version.maven-wagon-ssh}</version>
-      </extension>
-    </extensions>
-
     <plugins>
       <plugin>
         <groupId>io.github.phillipuniverse</groupId>
@@ -83,23 +71,6 @@
                 </pre-commit>
               </hooks>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>wagon-maven-plugin</artifactId>
-        <version>${version.maven-wagon-plugin}</version>
-        <configuration>
-          <fromDir>${project.build.directory}/site/apidocs</fromDir>
-          <url>scpexe://di25fem@bsb0mdz-reporting.bsb.lrz.de/</url>
-          <toDir>local/javadoc/${javadoc.basepath}</toDir>
-        </configuration>
-        <executions>
-          <execution>
-            <id>javadoc-parent-only</id>
-            <phase>deploy</phase>
-            <inherited>false</inherited>
           </execution>
         </executions>
       </plugin>
@@ -162,6 +133,14 @@
     </pluginManagement>
   </build>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <repositories>
     <repository>
       <id>ossrh-snapshots</id>
@@ -175,23 +154,5 @@
       </releases>
     </repository>
   </repositories>
-
-  <distributionManagement>
-    <!-- credentials for server in settings.xml -->
-    <repository>
-      <id>maven-releases</id>
-      <name>Maven Releases</name>
-      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>maven-snapshots</id>
-      <name>Maven Snapshots</name>
-      <url>http://bsb0mdz-repository.bsb.lrz.de/repository/maven-snapshots/</url>
-    </snapshotRepository>
-    <site>
-      <id>website-projects</id>
-      <url>scp://bsb0mdz-reporting.bsb.lrz.de/local/projects/${project.groupId}/${project.artifactId}</url>
-    </site>
-  </distributionManagement>
 
 </project>
