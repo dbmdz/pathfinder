@@ -11,7 +11,7 @@
 
   <name>Pathfinder: Spring Boot Bindings</name>
   <properties>
-    <version.spring-boot>2.4.4</version.spring-boot>
+    <version.spring-boot>2.5.2</version.spring-boot>
     <version.javax.annotation-api>1.3.2</version.javax.annotation-api>
   </properties>
 
