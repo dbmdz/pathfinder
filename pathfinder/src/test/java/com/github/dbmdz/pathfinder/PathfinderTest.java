@@ -41,6 +41,11 @@ public class PathfinderTest {
     Optional<Path> actual = pathfinder.find("123");
     Path expected = fs.path("/home/tester/subdir1/subdir2/filename.xml");
     assertThat(actual).contains(expected);
+
+    pathfinder.addPattern("456", "file:~/subdir1/subdir2/filename.xml");
+    actual = pathfinder.find("456");
+    expected = fs.path("file:/home/tester/subdir1/subdir2/filename.xml");
+    assertThat(actual).contains(expected);
   }
 
   @Test

@@ -46,7 +46,7 @@ public class Pathfinder {
    * @see java.util.regex.Pattern
    */
   public Pathfinder addPattern(String pattern, String template) {
-    if (template.startsWith("~/")) {
+    if (template.startsWith("~/") || template.startsWith("file:~/")) {
       template = template.replaceFirst("~/", userHomeDirectory);
     }
     pathSpecs.add(new PathSpec(pattern, template, fileSystem));
