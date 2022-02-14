@@ -28,7 +28,7 @@
     <version.fmt-maven-plugin>2.13</version.fmt-maven-plugin>
     <version.jacoco-maven-plugin>0.8.7</version.jacoco-maven-plugin>
     <version.maven-gpg-plugin>3.0.1</version.maven-gpg-plugin>
-    <version.nexus-staging-maven-plugin>1.6.8</version.nexus-staging-maven-plugin>
+    <version.nexus-staging-maven-plugin>1.6.10</version.nexus-staging-maven-plugin>
   </properties>
 
   <dependencyManagement>
