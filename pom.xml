@@ -8,26 +8,74 @@
   <artifactId>pathfinder-parent</artifactId>
   <packaging>pom</packaging>
   <version>2.1.0-SNAPSHOT</version>
+
   <modules>
     <module>pathfinder</module>
     <module>spring-boot-pathfinder</module>
   </modules>
 
   <name>Pathfinder</name>
+  <description>Resolve paths for identifier patterns.</description>
+  <url>https://github.com/dbmdz/pathfinder</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://github.com/dbmdz/pathfinder/blob/main/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Marcus Bitzl</name>
+      <id>bitzl</id>
+    </developer>
+    <developer>
+      <name>Christoph Lorenz</name>
+      <id>clorenz</id>
+    </developer>
+    <developer>
+      <name>Matthias Lindinger</name>
+      <id>morpheus-87</id>
+    </developer>
+    <developer>
+      <name>Ralf Eichinger</name>
+      <id>datazuul</id>
+    </developer>
+    <developer>
+      <name>Stefan Schweter</name>
+      <id>stefan-it</id>
+    </developer>
+  </developers>
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/dbmdz/pathfinder/actions</url>
+  </ciManagement>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/dbmdz/pathfinder/issues</url>
+  </issueManagement>
+  <scm>
+    <connection>https://github.com/dbmdz/pathfinder.git</connection>
+    <developerConnection>git@github.com:dbmdz/pathfinder.git</developerConnection>
+    <url>https://github.com/dbmdz/pathfinder</url>
+  </scm>
 
   <properties>
     <javadoc.basepath>pathfinder</javadoc.basepath>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     <version.assertj-core>3.22.0</version.assertj-core>
-    <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.junit-jupiter>5.8.2</version.junit-jupiter>
-    <version.maven-javadoc-plugin>3.3.2</version.maven-javadoc-plugin>
-    <version.maven-surefire-plugin>3.0.0-M6</version.maven-surefire-plugin>
-    <version.fmt-maven-plugin>2.13</version.fmt-maven-plugin>
+    <!-- Plugin versions -->
+    <version.fmt-maven-plugin>2.18</version.fmt-maven-plugin>
+    <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.jacoco-maven-plugin>0.8.8</version.jacoco-maven-plugin>
     <version.maven-gpg-plugin>3.0.1</version.maven-gpg-plugin>
+    <version.maven-javadoc-plugin>3.3.2</version.maven-javadoc-plugin>
+    <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
+    <version.maven-surefire-plugin>3.0.0-M6</version.maven-surefire-plugin>
     <version.nexus-staging-maven-plugin>1.6.12</version.nexus-staging-maven-plugin>
   </properties>
 
@@ -51,6 +99,18 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>com.spotify.fmt</groupId>
+        <artifactId>fmt-maven-plugin</artifactId>
+        <version>${version.fmt-maven-plugin}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>io.github.phillipuniverse</groupId>
         <artifactId>githook-maven-plugin</artifactId>
         <version>${version.githook-maven-plugin}</version>
@@ -62,8 +122,8 @@
             <configuration>
               <hooks>
                 <pre-commit>
-                  if ! mvn com.coveo:fmt-maven-plugin:check ; then
-                  mvn com.coveo:fmt-maven-plugin:format
+                  if ! mvn com.spotify.fmt:fmt-maven-plugin:check ; then
+                  mvn com.spotify.fmt:fmt-maven-plugin:format
                   echo -e "\e[31mCode has been reformatted to match code style\e[0m"
                   echo -e "\e[31mPlease use git add … to add modified files\e[0m"
                   echo "Your commit message was:"
@@ -77,13 +137,30 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>com.coveo</groupId>
-        <artifactId>fmt-maven-plugin</artifactId>
-        <version>${version.fmt-maven-plugin}</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${version.maven-javadoc-plugin}</version>
         <executions>
           <execution>
+            <id>attach-javadocs</id>
             <goals>
-              <goal>format</goal>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <doclint>none</doclint>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${version.maven-source-plugin}</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
             </goals>
           </execution>
         </executions>
@@ -124,26 +201,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${version.maven-javadoc-plugin}</version>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-              <configuration>
-                <additionalOptions>-Xdoclint:none</additionalOptions>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
 
   <distributionManagement>
@@ -170,7 +227,7 @@
 
   <profiles>
     <profile>
-      <id>sign</id>
+      <id>deploy</id>
       <build>
         <plugins>
           <plugin>
