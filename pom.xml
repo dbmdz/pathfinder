@@ -67,7 +67,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <version.assertj-core>3.23.1</version.assertj-core>
-    <version.junit-jupiter>5.8.2</version.junit-jupiter>
+    <version.junit-jupiter>5.9.0</version.junit-jupiter>
     <!-- Plugin versions -->
     <version.fmt-maven-plugin>2.19</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
