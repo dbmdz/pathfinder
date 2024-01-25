@@ -66,7 +66,7 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <version.assertj-core>3.25.1</version.assertj-core>
+    <version.assertj-core>3.25.2</version.assertj-core>
     <version.junit-jupiter>5.10.1</version.junit-jupiter>
     <!-- Plugin versions -->
     <version.fmt-maven-plugin>2.22.1</version.fmt-maven-plugin>
