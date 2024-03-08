@@ -69,7 +69,7 @@
     <version.assertj-core>3.25.3</version.assertj-core>
     <version.junit-jupiter>5.10.2</version.junit-jupiter>
     <!-- Plugin versions -->
-    <version.fmt-maven-plugin>2.22.1</version.fmt-maven-plugin>
+    <version.fmt-maven-plugin>2.23</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.jacoco-maven-plugin>0.8.11</version.jacoco-maven-plugin>
     <version.maven-gpg-plugin>3.1.0</version.maven-gpg-plugin>
