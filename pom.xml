@@ -72,7 +72,7 @@
     <version.fmt-maven-plugin>2.23</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.jacoco-maven-plugin>0.8.11</version.jacoco-maven-plugin>
-    <version.maven-gpg-plugin>3.2.0</version.maven-gpg-plugin>
+    <version.maven-gpg-plugin>3.2.1</version.maven-gpg-plugin>
     <version.maven-javadoc-plugin>3.6.3</version.maven-javadoc-plugin>
     <version.maven-source-plugin>3.3.0</version.maven-source-plugin>
     <version.maven-surefire-plugin>3.2.5</version.maven-surefire-plugin>
