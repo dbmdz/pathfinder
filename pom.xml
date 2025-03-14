@@ -66,16 +66,16 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <version.assertj-core>3.26.3</version.assertj-core>
-    <version.junit-jupiter>5.11.0</version.junit-jupiter>
+    <version.assertj-core>3.27.3</version.assertj-core>
+    <version.junit-jupiter>5.12.0</version.junit-jupiter>
     <!-- Plugin versions -->
-    <version.fmt-maven-plugin>2.24</version.fmt-maven-plugin>
+    <version.fmt-maven-plugin>2.25</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.jacoco-maven-plugin>0.8.12</version.jacoco-maven-plugin>
-    <version.maven-gpg-plugin>3.2.5</version.maven-gpg-plugin>
-    <version.maven-javadoc-plugin>3.10.0</version.maven-javadoc-plugin>
+    <version.maven-gpg-plugin>3.2.7</version.maven-gpg-plugin>
+    <version.maven-javadoc-plugin>3.11.2</version.maven-javadoc-plugin>
     <version.maven-source-plugin>3.3.1</version.maven-source-plugin>
-    <version.maven-surefire-plugin>3.5.0</version.maven-surefire-plugin>
+    <version.maven-surefire-plugin>3.5.2</version.maven-surefire-plugin>
     <version.nexus-staging-maven-plugin>1.7.0</version.nexus-staging-maven-plugin>
   </properties>
 
