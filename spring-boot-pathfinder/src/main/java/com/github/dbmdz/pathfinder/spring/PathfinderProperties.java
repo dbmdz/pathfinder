@@ -2,6 +2,7 @@ package com.github.dbmdz.pathfinder.spring;
 
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.bind.ConstructorBinding;
 import org.springframework.lang.Nullable;
 
 /** Spring properties file to load Pathfinder configuration <code>application.yml</code>. */
@@ -12,6 +13,7 @@ public class PathfinderProperties {
     private final String pattern;
     private final List<String> templates;
 
+    @ConstructorBinding
     public PathPattern(
         String pattern, @Nullable String template, @Nullable List<String> templates) {
       if (template == null && (templates == null || templates.isEmpty())) {
@@ -39,6 +41,7 @@ public class PathfinderProperties {
 
   private final List<PathPattern> patterns;
 
+  @ConstructorBinding
   public PathfinderProperties(List<PathPattern> patterns) {
     this.patterns = patterns;
   }
