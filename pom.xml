@@ -7,7 +7,7 @@
   <groupId>com.github.dbmdz.pathfinder</groupId>
   <artifactId>pathfinder-parent</artifactId>
   <packaging>pom</packaging>
-  <version>2.1.1-SNAPSHOT</version>
+  <version>3.0.0</version>
 
   <modules>
     <module>pathfinder</module>
@@ -69,6 +69,7 @@
     <version.assertj-core>3.27.3</version.assertj-core>
     <version.junit-jupiter>5.12.1</version.junit-jupiter>
     <!-- Plugin versions -->
+    <version.mvn-compiler-plugin>3.14.0</version.mvn-compiler-plugin>
     <version.fmt-maven-plugin>2.25</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
     <version.jacoco-maven-plugin>0.8.12</version.jacoco-maven-plugin>
@@ -101,6 +102,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.mvn-compiler-plugin}</version>
         <configuration>
           <compilerArgs>
             <arg>-parameters</arg>

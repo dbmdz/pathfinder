@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0](https://github.com/dbmdz/pathfinder/releases/tag/3.0.0) - 2025-03-17
+
+### Changed
+
+- **BREAKING**: spring boot dependency upgraded to 3.4.3 (in `spring-boot-pathfinder`)
+
 ## [2.1.0](https://github.com/dbmdz/pathfinder/releases/tag/2.1.0) - 2022-04-07
 
 ### Added
