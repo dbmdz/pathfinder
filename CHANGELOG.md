@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [4.0.1](https://github.com/dbmdz/pathfinder/releases/tag/4.0.1) - 2026-10-08
+
+### Fixed
+
+- Fixed publishing to Maven Central
+
 ## [4.0.0](https://github.com/dbmdz/pathfinder/releases/tag/4.0.0) - 2026-10-08
 
 ### Changed
