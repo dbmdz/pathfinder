@@ -1,9 +1,9 @@
-package com.github.dbmdz.pathfinder.spring;
+package dev.mdz.pathfinder.spring;
 
 import static java.util.Objects.requireNonNull;
 
-import com.github.dbmdz.pathfinder.Pathfinder;
-import com.github.dbmdz.pathfinder.spring.PathfinderProperties.PathPattern;
+import dev.mdz.pathfinder.Pathfinder;
+import dev.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

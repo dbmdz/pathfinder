@@ -1,4 +1,4 @@
-package com.github.dbmdz.pathfinder;
+package dev.mdz.pathfinder;
 
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
