@@ -1,4 +1,4 @@
-package com.github.dbmdz.pathfinder.spring;
+package dev.mdz.pathfinder.spring;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,10 +1,10 @@
-package com.github.dbmdz.pathfinder.spring;
+package dev.mdz.pathfinder.spring;
 
 import static java.util.Collections.emptyList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import com.github.dbmdz.pathfinder.spring.PathfinderProperties.PathPattern;
+import dev.mdz.pathfinder.spring.PathfinderProperties.PathPattern;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.github.dbmdz.pathfinder;
+package dev.mdz.pathfinder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

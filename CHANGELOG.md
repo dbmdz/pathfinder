@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Breaking**: Changed `groupId` from `com.github.dbmdz.pathfinder` to `dev.mdz`
+- **Breaking**: Changed `groupId` from `com.github.dbmdz.pathfinder` to `dev.mdz` and renamed packages
 
 ## [3.0.0](https://github.com/dbmdz/pathfinder/releases/tag/3.0.0) - 2025-03-17
 
