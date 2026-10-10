@@ -50,7 +50,7 @@ jobs:
       - name: Set up Maven 3.9.16
         uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.16
+          maven-version: 3.10.0
       # Publish snapshot
       - name: Set up JDK 17 for publishing a snapshot
         if: github.event_name == 'push' && endswith(env.PROJECT_VERSION, 'SNAPSHOT')
