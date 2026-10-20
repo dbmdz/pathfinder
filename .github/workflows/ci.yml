@@ -15,14 +15,16 @@ jobs:
       matrix:
         java: [17]
     steps:
-      - uses: actions/checkout@v7
+      - name: Check out repository
+        uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v6
         with:
           check-latest: true
           distribution: temurin
           java-version: ${{ matrix.java }}
-      - uses: actions/cache@v6
+      - name: Set up cache
+        uses: actions/cache@v6
         env:
           cache-name: cache-maven-artifacts
         with:
@@ -35,8 +37,10 @@ jobs:
     runs-on: ubuntu-24.04
     needs: build
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/cache@v6
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up cache
+        uses: actions/cache@v6
         env:
           cache-name: cache-maven-artifacts
         with:
