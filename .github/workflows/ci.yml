@@ -20,7 +20,7 @@ jobs:
         with:
           check-latest: true
           distribution: temurin
-          java-version: 17
+          java-version: 25
       - name: Set up cache
         uses: actions/cache@v6
         env:
@@ -60,7 +60,7 @@ jobs:
         with:
           check-latest: true
           distribution: temurin
-          java-version: 17
+          java-version: 25
           server-id: central
           server-password: MAVEN_PASSWORD
           server-username: MAVEN_USERNAME
@@ -79,7 +79,7 @@ jobs:
           distribution: temurin
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          java-version: 17
+          java-version: 25
           server-id: central
           server-password: MAVEN_PASSWORD
           server-username: MAVEN_USERNAME
