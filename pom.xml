@@ -70,11 +70,11 @@
     <version.mvn-compiler-plugin>3.16.0</version.mvn-compiler-plugin>
     <version.fmt-maven-plugin>2.29</version.fmt-maven-plugin>
     <version.githook-maven-plugin>1.0.5</version.githook-maven-plugin>
-    <version.jacoco-maven-plugin>0.8.15</version.jacoco-maven-plugin>
+    <version.jacoco-maven-plugin>0.8.16</version.jacoco-maven-plugin>
     <version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
     <version.maven-javadoc-plugin>3.12.0</version.maven-javadoc-plugin>
     <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
-    <version.maven-surefire-plugin>3.6.0</version.maven-surefire-plugin>
+    <version.maven-surefire-plugin>3.6.1</version.maven-surefire-plugin>
   </properties>
 
   <dependencyManagement>
